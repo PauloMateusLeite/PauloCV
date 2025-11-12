@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paulo Mateus de Oliveira Leite — Resume</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#161616;
+    --muted:#5e5e5e;
+    --accent:#3b82f6;
+    --chip:#eef2ff;
+    --line:#eaeaea;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:980px;margin:32px auto;padding:0 20px}
+  header{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end;border-bottom:2px solid var(--line);padding-bottom:16px}
+  .name{font-size:28px;line-height:1.2;font-weight:800;letter-spacing:.2px}
+  .tagline{color:var(--muted)}
+  .contact{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px}
+  .contact span{white-space:nowrap}
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:28px;margin-top:24px}
+  aside{border-right:1px solid var(--line);padding-right:24px}
+  section{padding-bottom:12px}
+  h2{font-size:18px;margin:18px 0 8px 0;letter-spacing:.3px;text-transform:uppercase}
+  .summary{font-size:15px;color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .chip{font-size:13px;padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--line)}
+  .list{margin:0;padding:0;list-style:none}
+  .item{padding:12px 0;border-bottom:1px solid var(--line)}
+  .role{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .role .title{font-weight:700}
+  .role .meta{color:var(--muted);font-size:14px}
+  .bullets{margin:8px 0 0 0;padding-left:18px}
+  .bullets li{margin:4px 0}
+  .edu .school{font-weight:700}
+  footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}
+  /* Print */
+  @media print{
+    .container{margin:0;padding:0}
+    header{border:0;padding:0;margin-bottom:8px}
+    .grid{grid-template-columns:300px 1fr;gap:16px;margin-top:8px}
+    a{color:inherit;text-decoration:none}
+    .chip{border-color:#ddd;background:#f8f8ff}
+  }
+  /* Mobile */
+  @media (max-width:800px){
+    .grid{grid-template-columns:1fr}
+    aside{border-right:0;padding-right:0;border-bottom:1px solid var(--line);padding-bottom:12px}
+    .contact{width:100%;margin-left:0}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="name">Paulo Mateus de Oliveira Leite</div>
+        <div class="tagline">.NET / PL&hairsp;SQL Engineer • Financial Systems & Integrations</div>
+      </div>
+      <div class="contact">
+        <span>Braga, Portugal</span>
+        <span><a href="tel:+351912553635">+351&nbsp;912&nbsp;553&nbsp;635</a></span>
+        <span><a href="mailto:paulo.mateus@outlook.com">paulo.mateus@outlook.com</a></span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside>
+        <section>
+          <h2>Summary</h2>
+          <p class="summary">
+            Software engineer with nearly two decades of experience across .NET and SQL ecosystems.
+            Strong background in financial systems, integrations, and data-intensive backends.
+            Currently maintaining credit risk systems with PL/SQL. Comfortable with Agile practices,
+            design patterns, and performance-minded database work.
+          </p>
+        </section>
+
+        <section>
+          <h2>Core Skills</h2>
+          <div class="chips">
+            <span class="chip">.NET (Framework & Core)</span>
+            <span class="chip">C#</span>
+            <span class="chip">ASP.NET MVC</span>
+            <span class="chip">Windows Forms / WPF</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">Oracle</span>
+            <span class="chip">PL/SQL</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">SQL Server</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">DevExpress MVC</span>
+            <span class="chip">Git</span>
+            <span class="chip">Agile / Scrum</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Web &amp; JS</h2>
+          <div class="chips">
+            <span class="chip">HTML</span>
+            <span class="chip">HTTP</span>
+            <span class="chip">CSS</span>
+            <span class="chip">jQuery</span>
+            <span class="chip">AJAX</span>
+            <span class="chip">Vue.js</span>
+            <span class="chip">OutSystems 10</span>
+          </div>
+        </section>
+
+        <section class="edu">
+          <h2>Education</h2>
+          <div><span class="school">Universidade Paulista (UNIP)</span> — IT Management</div>
+          <div class="meta">Campinas, São Paulo, Brazil — Graduated 2012</div>
+        </section>
+      </aside>
+
+      <main>
+        <section>
+          <h2>Experience</h2>
+          <ul class="list">
+            <li class="item">
+              <div class="role">
+                <div class="title">Developer — Natixis</div>
+                <div class="meta">Porto, Portugal · Jul 2025 – Present</div>
+              </div>
+              <ul class="bullets">
+                <li>PL/SQL development and maintenance on credit risk systems supporting assessments and reporting.</li>
+                <li>Improved reliability and performance of critical risk workflows and batch processing.</li>
+                <li>Collaborate with stakeholders to ensure compliance with internal risk policies and audit requirements.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Developer — Parfois</div>
+                <div class="meta">Rio Tinto, Portugal · Apr 2023 – Jul 2025</div>
+              </div>
+              <ul class="bullets">
+                <li>Maintenance, support, and development of the company’s financial system.</li>
+                <li>.NET Framework 4.8, .NET Core, ASP.NET MVC 5 (DevExpress MVC), and PL/SQL in an Agile environment.</li>
+                <li>Drove availability, resilience, and continuous improvement of financial operations.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Developer — QuickOps</div>
+                <div class="meta">Matosinhos, Portugal · Apr 2022 – Mar 2023</div>
+              </div>
+              <ul class="bullets">
+                <li>.NET developer on a WPF monolith with PostgreSQL; Git, Agile; patterns incl. MVVM, Lazy Loading, Factory.</li>
+                <li><em>Reason for leaving:</em> Outdated stack with no upgrade prospects.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Developer — KCS</div>
+                <div class="meta">Braga/Porto, Portugal · May 2021 – Mar 2022</div>
+              </div>
+              <ul class="bullets">
+                <li>Integrated JIRA with .NET Core for insurers using microservices and NServiceBus gateway; PostgreSQL.</li>
+                <li><em>Reason for leaving:</em> Personal.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Developer — Growin</div>
+                <div class="meta">Braga, Portugal · Sep 2019 – May 2021</div>
+              </div>
+              <ul class="bullets">
+                <li>OutSystems, .NET, and SQL across logistics (Inchcape), CMS (OrchardCore), and finance (ItSector/EbankIT).</li>
+                <li><em>Reason for leaving:</em> End of project.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Tech Lead — Casino Portugal</div>
+                <div class="meta">Famalicão, Portugal · Dec 2018 – Sep 2019</div>
+              </div>
+              <ul class="bullets">
+                <li>Implemented Agile mindset; backlog management; client communication.</li>
+                <li>.NET & Vue.js; hexagonal architecture; DDD; CQRS; Event Sourcing (Event Store); Swagger for API testing.</li>
+                <li><em>Reason for leaving:</em> Employer contract termination.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — Kroton</div>
+                <div class="meta">Campinas, Brazil · Apr 2017 – Dec 2018</div>
+              </div>
+              <ul class="bullets">
+                <li>Enhanced student digital platform and finance systems (Angular, Node.js, Web API, PL/SQL; AWS SQS; Scaled Agile).</li>
+                <li><em>Reason for leaving:</em> Relocation.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — Akiva</div>
+                <div class="meta">Campinas, Brazil · Dec 2016 – Mar 2017</div>
+              </div>
+              <ul class="bullets">
+                <li>Custom dialers for call centers (.NET, MySQL).</li>
+                <li><em>Reason for leaving:</em> Personal.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — Sanmina</div>
+                <div class="meta">Campinas, Brazil · Apr 2016 – Dec 2016</div>
+              </div>
+              <ul class="bullets">
+                <li>BI features and automated test software for production lines (.NET, PostgreSQL).</li>
+                <li><em>Reason for leaving:</em> Team moved to the U.S.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — Online Applications</div>
+                <div class="meta">Campinas, Brazil · Dec 2014 – Apr 2016</div>
+              </div>
+              <ul class="bullets">
+                <li>Supplier Search System (.NET Web Forms, Oracle) with a focus on performance and UX.</li>
+                <li>Aircraft Crew Catering Management (SQL Server, T-SQL) — requirements analysis and development.</li>
+                <li><em>Reason for leaving:</em> End of projects.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — Ci&amp;T</div>
+                <div class="meta">Campinas, Brazil · Jan 2014 – Oct 2014</div>
+              </div>
+              <ul class="bullets">
+                <li>BTG Pactual project — .NET backend CRUD for model layer; first use of Git.</li>
+                <li><em>Reason for leaving:</em> End of project.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — Angolan Social Security</div>
+                <div class="meta">Luanda, Angola · Feb 2013 – Dec 2013</div>
+              </div>
+              <ul class="bullets">
+                <li>Benefits and pension systems (.NET MVC, SQL, Windows Forms) for pension, food allowance, maternity.</li>
+                <li><em>Reason for leaving:</em> End of project.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Developer / Team Lead / IT Coordinator — AGV Logística</div>
+                <div class="meta">Vinhedo, Brazil · Jul 2009 – Feb 2013</div>
+              </div>
+              <ul class="bullets">
+                <li>Promoted from Junior to IT Coordinator; led a 4-person team.</li>
+                <li>Web Forms, SQL (Oracle), Crystal Reports; built the intranet and led integrations; introduced Agile practices.</li>
+                <li>First experience with version control (Tortoise), design patterns, and web services.</li>
+                <li><em>Reason for leaving:</em> Relocation.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">.NET Developer — E-Value</div>
+                <div class="meta">Campinas, Brazil · Aug 2008 – Sep 2009</div>
+              </div>
+              <ul class="bullets">
+                <li>.NET developer and team lead at a real-estate focused web agency; hiring, client training and presentations.</li>
+                <li><em>Reason for leaving:</em> 2008 real estate crisis.</li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <div class="role">
+                <div class="title">Java Developer</div>
+                <div class="meta">2004 – 2008</div>
+              </div>
+              <ul class="bullets">
+                <li>Intern at Banco do Brasil (2 years) and developer at CPQD (2 years), Campinas, São Paulo.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      Last updated: Nov 2025 • Simple HTML file — edit freely (sections, bullets, colors).
+    </footer>
+  </div>
+</body>
+</html>
