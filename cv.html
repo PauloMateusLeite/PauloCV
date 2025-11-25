@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paulo Mateus de Oliveira Leite — Resume</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#020617;
+    --bg-card:#0b1220;
+    --ink:#e5e7eb;
+    --muted:#9ca3af;
+    --accent:#38bdf8;
+    --accent-soft:rgba(56,189,248,0.12);
+    --accent-strong:#0ea5e9;
+    --line:#1f2937;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at top left, #1d283a 0, transparent 50%),
+      radial-gradient(circle at bottom right, #0f172a 0, #020617 60%);
+    color:var(--ink);
+    font:15px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+    padding:24px 12px;
+  }
+
+  .shell{
+    max-width:1060px;
+    margin:0 auto;
+  }
+
+  .card{
+    background:radial-gradient(circle at top, rgba(148,163,184,0.18) 0, transparent 50%), var(--bg-card);
+    border-radius:26px;
+    border:1px solid rgba(148,163,184,0.5);
+    box-shadow:0 40px 120px rgba(15,23,42,0.9);
+    padding:24px 26px 26px;
+  }
+
+  header{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px 24px;
+    align-items:flex-start;
+    border-bottom:1px solid rgba(148,163,184,0.35);
+    padding-bottom:18px;
+  }
+
+  .name-block{
+    flex:1 1 260px;
+  }
+
+  .name{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:.03em;
+  }
+
+  .tagline{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  .badge-row{
+    margin-top:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  .badge{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    padding:4px 9px;
+    border-radius:999px;
+    border:1px solid rgba(148,163,184,0.7);
+    background:rgba(15,23,42,0.7);
+    color:var(--muted);
+  }
+
+  .badge.accent{
+    border-color:var(--accent);
+    background:var(--accent-soft);
+    color:var(--accent-strong);
+  }
+
+  .contact{
+    min-width:220px;
+    font-size:13px;
+    text-align:right;
+  }
+  .contact a{
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .contact a:hover{
+    color:var(--accent);
+  }
+  .contact div+div{margin-top:4px;}
+  .contact .location{color:var(--muted);}
+
+  .top-actions{
+    margin-top:10px;
+    text-align:right;
+  }
+
+  #print-pdf{
+    display:inline-block;
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:999px;
+    border:1px solid rgba(148,163,184,0.7);
+    background:rgba(15,23,42,0.9);
+    color:var(--ink);
+    cursor:pointer;
+  }
+  #print-pdf:hover{
+    border-color:var(--accent-strong);
+    color:var(--accent-strong);
+  }
+
+  main{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns: minmax(0,2.1fr) minmax(0,1.5fr);
+    gap:20px;
+  }
+
+  @media (max-width:860px){
+    .card{border-radius:20px;padding:18px 16px 20px;}
+    header{flex-direction:column;align-items:flex-start;}
+    .contact{text-align:left;}
+    .top-actions{text-align:left;}
+    main{grid-template-columns:1fr;}
+  }
+
+  section + section{margin-top:16px;}
+
+  h2{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+
+  .summary{
+    font-size:14px;
+    color:var(--ink);
+  }
+
+  /* STAT CARDS */
+
+  .stats{
+    margin-top:12px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+  }
+  .stat{
+    padding:10px 12px;
+    border-radius:16px;
+    background:rgba(15,23,42,0.9);
+    border:1px solid rgba(148,163,184,0.4);
+  }
+  .stat-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.09em;
+    color:var(--muted);
+  }
+  .stat-value{
+    margin-top:4px;
+    font-size:18px;
+    font-weight:700;
+  }
+  .stat-tag{
+    font-size:11px;
+    color:var(--muted);
+  }
+
+  @media (max-width:640px){
+    .stats{grid-template-columns:1fr 1fr;}
+  }
+
+  /* SKILL GRAPH */
+
+  .skill-group + .skill-group{margin-top:10px;}
+
+  .skill-header{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    margin-bottom:2px;
+  }
+  .skill-header span:last-child{
+    color:var(--muted);
+  }
+
+  .bar-outer{
+    width:100%;
+    height:7px;
+    border-radius:999px;
+    background:rgba(15,23,42,0.9);
+    border:1px solid rgba(148,163,184,0.45);
+    overflow:hidden;
+  }
+  .bar-inner{
+    height:100%;
+    background:linear-gradient(90deg,var(--accent-strong),#22c55e);
+    box-shadow:0 0 12px rgba(56,189,248,0.8);
+    transform-origin:left center;
+  }
+  .lvl-100{width:100%;}
+  .lvl-95{width:95%;}
+  .lvl-90{width:90%;}
+  .lvl-85{width:85%;}
+  .lvl-80{width:80%;}
+  .lvl-70{width:70%;}
+  .lvl-60{width:60%;}
+
+  /* EXPERIENCE TIMELINE */
+
+  .timeline{
+    position:relative;
+    margin-top:8px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:10px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(to bottom,var(--accent-strong),transparent);
+    opacity:0.6;
+  }
+  .exp-item{
+    position:relative;
+    padding-left:28px;
+    padding-bottom:14px;
+  }
+  .exp-item:last-child{padding-bottom:0;}
+  .exp-item::before{
+    content:"";
+    position:absolute;
+    left:4px;
+    top:4px;
+    width:12px;
+    height:12px;
+    border-radius:999px;
+    background:var(--bg-card);
+    border:2px solid var(--accent-strong);
+    box-shadow:0 0 0 4px rgba(56,189,248,0.2);
+  }
+  .exp-title{
+    font-size:14px;
+    font-weight:600;
+  }
+  .exp-meta{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:1px;
+  }
+  .exp-tags{
+    margin-top:5px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    font-size:11px;
+  }
+  .exp-tag{
+    padding:2px 8px;
+    border-radius:999px;
+    background:rgba(15,23,42,0.9);
+    border:1px solid rgba(148,163,184,0.5);
+    color:var(--muted);
+  }
+  .exp-body{
+    font-size:13px;
+    margin-top:4px;
+    color:#e5e7eb;
+  }
+  .exp-body ul{margin-left:18px;margin-top:2px;}
+  .exp-body li+li{margin-top:2px;}
+
+  /* FULL CAREER ACCORDION */
+
+  details.full-career{
+    margin-top:10px;
+    padding:8px 10px;
+    border-radius:16px;
+    border:1px solid rgba(148,163,184,0.35);
+    background:rgba(15,23,42,0.7);
+  }
+  details.full-career summary{
+    list-style:none;
+    cursor:pointer;
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  details.full-career summary::-webkit-details-marker{
+    display:none;
+  }
+  details.full-career summary::after{
+    content:"▾";
+    font-size:11px;
+    margin-left:8px;
+    transition:transform .18s ease-out;
+  }
+  details.full-career[open] summary::after{
+    transform:rotate(180deg);
+  }
+  .full-career-body{
+    margin-top:8px;
+  }
+  .timeline.chronological::before{
+    background:linear-gradient(to bottom,var(--accent-strong),transparent);
+  }
+
+  /* RIGHT COLUMN BLOCKS */
+
+  .pill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:4px;
+    font-size:12px;
+  }
+  .pill{
+    padding:3px 8px;
+    border-radius:999px;
+    border:1px solid rgba(148,163,184,0.5);
+    background:rgba(15,23,42,0.9);
+    color:var(--muted);
+  }
+
+  .edu{
+    font-size:13px;
+    color:var(--ink);
+  }
+  .edu .school{font-weight:600;}
+  .edu .meta{color:var(--muted);font-size:12px;margin-top:2px;}
+
+  footer{
+    margin-top:14px;
+    text-align:center;
+    font-size:11px;
+    color:var(--muted);
+  }
+
+  a{color:var(--accent-strong);}
+  a:hover{text-decoration:underline;}
+
+  /* PRINT STYLES */
+
+  @media print{
+    body{
+      background:#ffffff;
+      padding:0;
+    }
+    .card{
+      box-shadow:none;
+      border-radius:0;
+      border:none;
+      background:#ffffff;
+      padding:0;
+    }
+    .shell{
+      max-width:none;
+      margin:0;
+    }
+    #print-pdf{
+      display:none;
+    }
+    header{
+      border-bottom:1px solid #dddddd;
+    }
+    main{
+      grid-template-columns: minmax(0,2.1fr) minmax(0,1.5fr);
+      gap:12px;
+    }
+    details.full-career{
+      border-color:#cccccc;
+      background:#ffffff;
+    }
+    details.full-career summary{
+      font-weight:600;
+      color:#333333;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="shell">
+  <div class="card">
+    <header>
+      <div class="name-block">
+        <div class="name">Paulo Mateus de Oliveira Leite</div>
+        <div class="tagline">Senior .NET / PL&nbsp;SQL Engineer · Financial &amp; Credit Risk Systems</div>
+        <div class="badge-row">
+          <span class="badge accent">21+ years in software</span>
+          <span class="badge">Azure · 5+ yrs</span>
+          <span class="badge">Financial systems &amp; integrations</span>
+          <span class="badge">SAFe Certified</span>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="location">Braga, Portugal</div>
+        <div><a href="tel:+351912553635">+351&nbsp;912&nbsp;553&nbsp;635</a></div>
+        <div><a href="mailto:paulo.mateus@outlook.com">paulo.mateus@outlook.com</a></div>
+        <div><a href="https://www.linkedin.com" target="_blank" rel="noopener">linkedin.com/in/paulomateus</a></div>
+        <div class="top-actions">
+          <button id="print-pdf" type="button">Print full PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <div>
+        <section>
+          <h2>Profile</h2>
+          <p class="summary">
+            Software engineer with nearly two decades of experience across .NET and SQL ecosystems, focused
+            on financial, credit risk, and data-intensive backends. Strong record modernising legacy systems,
+            stabilising mission-critical workflows, and collaborating with business on high-impact deliveries.
+            Comfortable owning services end-to-end: design, implementation, performance, and production support.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-label">Experience</div>
+              <div class="stat-value">21+</div>
+              <div class="stat-tag">years in software</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">.NET &amp; C#</div>
+              <div class="stat-value">17</div>
+              <div class="stat-tag">years hands-on</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Azure</div>
+              <div class="stat-value">5+</div>
+              <div class="stat-tag">years cloud exp.</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Experience (recent)</h2>
+          <div class="timeline">
+            <div class="exp-item">
+              <div class="exp-title">Developer — Natixis</div>
+              <div class="exp-meta">Porto, Portugal · Jul 2025 – Present</div>
+              <div class="exp-tags">
+                <span class="exp-tag">Credit risk</span>
+                <span class="exp-tag">Oracle</span>
+                <span class="exp-tag">PL/SQL</span>
+              </div>
+              <div class="exp-body">
+                <ul>
+                  <li>PL/SQL development and maintenance on credit risk systems supporting assessments and reporting.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-title">Developer — Parfois</div>
+              <div class="exp-meta">Rio Tinto, Portugal · Apr 2023 – Jul 2025</div>
+              <div class="exp-tags">
+                <span class="exp-tag">.NET Framework 4.8</span>
+                <span class="exp-tag">.NET Core</span>
+                <span class="exp-tag">ASP.NET MVC</span>
+                <span class="exp-tag">DevExpress MVC</span>
+                <span class="exp-tag">PL/SQL</span>
+              </div>
+              <div class="exp-body">
+                <ul>
+                  <li>Maintenance, support, and development of the company’s financial system.</li>
+                  <li>Improved availability, resilience, and continuous improvement of financial operations.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-title">Developer — QuickOps</div>
+              <div class="exp-meta">Matosinhos, Portugal · Apr 2022 – Mar 2023</div>
+              <div class="exp-tags">
+                <span class="exp-tag">WPF</span>
+                <span class="exp-tag">PostgreSQL</span>
+                <span class="exp-tag">Git · MVVM</span>
+              </div>
+              <div class="exp-body">
+                <ul>
+                  <li>.NET developer on a WPF monolith with PostgreSQL; used patterns such as MVVM, Lazy Loading, Factory.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-title">Developer — KCS</div>
+              <div class="exp-meta">Braga/Porto, Portugal · May 2021 – Mar 2022</div>
+              <div class="exp-tags">
+                <span class="exp-tag">.NET Core</span>
+                <span class="exp-tag">Microservices</span>
+                <span class="exp-tag">NServiceBus</span>
+                <span class="exp-tag">PostgreSQL</span>
+              </div>
+              <div class="exp-body">
+                <ul>
+                  <li>Integrated JIRA with .NET Core for insurers using microservices and an NServiceBus gateway.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-title">Developer — Growin</div>
+              <div class="exp-meta">Braga, Portugal · Sep 2019 – May 2021</div>
+              <div class="exp-tags">
+                <span class="exp-tag">OutSystems 10</span>
+                <span class="exp-tag">.NET</span>
+                <span class="exp-tag">SQL</span>
+                <span class="exp-tag">OrchardCore</span>
+              </div>
+              <div class="exp-body">
+                <ul>
+                  <li>Worked on logistics (Inchcape), CMS (OrchardCore), and finance (ItSector/EbankIT) using OutSystems, .NET and SQL.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <details id="full-career" class="full-career">
+            <summary>View full career timeline (2004 – 2025)</summary>
+            <div class="full-career-body">
+              <div class="timeline chronological">
+                <!-- CHRONOLOGICAL: earliest to latest -->
+                <div class="exp-item">
+                  <div class="exp-title">Java Developer</div>
+                  <div class="exp-meta">Campinas, Brazil · 2004 – 2008</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">Banco do Brasil (intern)</span>
+                    <span class="exp-tag">CPQD</span>
+                    <span class="exp-tag">Java</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Two years as intern at Banco do Brasil and two years as developer at CPQD, working on Java-based systems.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — E-Value</div>
+                  <div class="exp-meta">Campinas, Brazil · Aug 2008 – Sep 2009</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET</span>
+                    <span class="exp-tag">Real-estate web agency</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>.NET developer and team lead at a real-estate focused web agency; responsible for hiring, client training, and presentations.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Developer / Team Lead / IT Coordinator — AGV Logística</div>
+                  <div class="exp-meta">Vinhedo, Brazil · Jul 2009 – Feb 2013</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET Web Forms</span>
+                    <span class="exp-tag">Oracle</span>
+                    <span class="exp-tag">Crystal Reports</span>
+                    <span class="exp-tag">Agile</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Promoted from Junior Developer to IT Coordinator, leading a 4-person team.</li>
+                      <li>Built the company intranet, led integrations, introduced Agile practices and design patterns.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — Angolan Social Security</div>
+                  <div class="exp-meta">Luanda, Angola · Feb 2013 – Dec 2013</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET MVC</span>
+                    <span class="exp-tag">Windows Forms</span>
+                    <span class="exp-tag">SQL</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Worked on benefits and pension systems for pension, food allowance, and maternity.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — Ci&amp;T</div>
+                  <div class="exp-meta">Campinas, Brazil · Jan 2014 – Oct 2014</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET</span>
+                    <span class="exp-tag">BTG Pactual</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>BTG Pactual project — .NET backend CRUD for model layer; first professional experience with Git.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — Online Applications</div>
+                  <div class="exp-meta">Campinas, Brazil · Dec 2014 – Apr 2016</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">Web Forms</span>
+                    <span class="exp-tag">Oracle</span>
+                    <span class="exp-tag">SQL Server</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Supplier Search System (.NET Web Forms, Oracle) with strong focus on performance and UX.</li>
+                      <li>Aircraft Crew Catering Management (SQL Server, T-SQL) — requirements analysis and development.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — Sanmina</div>
+                  <div class="exp-meta">Campinas, Brazil · Apr 2016 – Dec 2016</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET</span>
+                    <span class="exp-tag">PostgreSQL</span>
+                    <span class="exp-tag">Manufacturing</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Implemented BI features and automated test software for production lines.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — Akiva</div>
+                  <div class="exp-meta">Campinas, Brazil · Dec 2016 – Mar 2017</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET</span>
+                    <span class="exp-tag">MySQL</span>
+                    <span class="exp-tag">Call centers</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Developed custom dialers for call centers using .NET and MySQL.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">.NET Developer — Kroton</div>
+                  <div class="exp-meta">Campinas, Brazil · Apr 2017 – Dec 2018</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">Angular</span>
+                    <span class="exp-tag">Node.js</span>
+                    <span class="exp-tag">Web API</span>
+                    <span class="exp-tag">PL/SQL</span>
+                    <span class="exp-tag">AWS SQS</span>
+                    <span class="exp-tag">SAFe</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Enhanced student digital platform and financial systems in a Scaled Agile (SAFe) environment.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Tech Lead — Casino Portugal</div>
+                  <div class="exp-meta">Famalicão, Portugal · Dec 2018 – Sep 2019</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET</span>
+                    <span class="exp-tag">Vue.js</span>
+                    <span class="exp-tag">Hexagonal architecture</span>
+                    <span class="exp-tag">DDD · CQRS · Event Sourcing</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Implemented Agile mindset, managed backlog, and led client communication.</li>
+                      <li>Designed and implemented APIs using hexagonal architecture and Event Sourcing.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Developer — Growin</div>
+                  <div class="exp-meta">Braga, Portugal · Sep 2019 – May 2021</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">OutSystems 10</span>
+                    <span class="exp-tag">.NET</span>
+                    <span class="exp-tag">SQL</span>
+                    <span class="exp-tag">OrchardCore</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>OutSystems, .NET, and SQL across logistics (Inchcape), CMS (OrchardCore), and finance (ItSector/EbankIT).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Developer — KCS</div>
+                  <div class="exp-meta">Braga/Porto, Portugal · May 2021 – Mar 2022</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET Core</span>
+                    <span class="exp-tag">Microservices</span>
+                    <span class="exp-tag">NServiceBus</span>
+                    <span class="exp-tag">PostgreSQL</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Integrated JIRA with .NET Core for insurers using microservices and an NServiceBus gateway; PostgreSQL backend.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Developer — QuickOps</div>
+                  <div class="exp-meta">Matosinhos, Portugal · Apr 2022 – Mar 2023</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">WPF</span>
+                    <span class="exp-tag">PostgreSQL</span>
+                    <span class="exp-tag">Git</span>
+                    <span class="exp-tag">MVVM</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>.NET developer on a WPF monolith with PostgreSQL; Git, Agile; patterns including MVVM, Lazy Loading, Factory.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Developer — Parfois</div>
+                  <div class="exp-meta">Rio Tinto, Portugal · Apr 2023 – Jul 2025</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">.NET Framework 4.8</span>
+                    <span class="exp-tag">.NET Core</span>
+                    <span class="exp-tag">ASP.NET MVC</span>
+                    <span class="exp-tag">DevExpress MVC</span>
+                    <span class="exp-tag">PL/SQL</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>Maintenance, support, and development of the company’s financial system in an Agile environment.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="exp-item">
+                  <div class="exp-title">Developer — Natixis</div>
+                  <div class="exp-meta">Porto, Portugal · Jul 2025 – Present</div>
+                  <div class="exp-tags">
+                    <span class="exp-tag">Credit risk</span>
+                    <span class="exp-tag">Oracle</span>
+                    <span class="exp-tag">PL/SQL</span>
+                  </div>
+                  <div class="exp-body">
+                    <ul>
+                      <li>PL/SQL development and maintenance on credit risk systems supporting assessments and reporting.</li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </details>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <section>
+          <h2>Key Technical Skills</h2>
+
+          <div class="skill-group">
+            <div class="skill-header">
+              <span>C# / .NET (Framework &amp; Core)</span>
+              <span>17 yrs · Advanced</span>
+            </div>
+            <div class="bar-outer"><div class="bar-inner lvl-100"></div></div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-header">
+              <span>Oracle &amp; PL/SQL</span>
+              <span>9 yrs · Advanced</span>
+            </div>
+            <div class="bar-outer"><div class="bar-inner lvl-95"></div></div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-header">
+              <span>REST APIs &amp; Microservices</span>
+              <span>10 yrs · Advanced</span>
+            </div>
+            <div class="bar-outer"><div class="bar-inner lvl-90"></div></div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-header">
+              <span>Microsoft Azure</span>
+              <span>5 yrs · Advanced</span>
+            </div>
+            <div class="bar-outer"><div class="bar-inner lvl-85"></div></div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-header">
+              <span>SQL Server · PostgreSQL</span>
+              <span>6 yrs · Intermediate/Advanced</span>
+            </div>
+            <div class="bar-outer"><div class="bar-inner lvl-80"></div></div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-header">
+              <span>Web (HTML, CSS, JS, Vue.js)</span>
+              <span>10+ yrs</span>
+            </div>
+            <div class="bar-outer"><div class="bar-inner lvl-80"></div></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Tooling &amp; Ecosystem</h2>
+          <div class="pill-row">
+            <span class="pill">ASP.NET MVC</span>
+            <span class="pill">WPF / Windows Forms</span>
+            <span class="pill">DevExpress MVC</span>
+            <span class="pill">Git</span>
+            <span class="pill">NUnit</span>
+            <span class="pill">xUnit</span>
+            <span class="pill">AWS SQS</span>
+            <span class="pill">OrchardCore</span>
+            <span class="pill">OutSystems 10</span>
+            <span class="pill">jQuery / AJAX</span>
+            <span class="pill">Crystal Reports / BI</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Practices &amp; Methodologies</h2>
+          <div class="pill-row">
+            <span class="pill">Agile &amp; Scrum</span>
+            <span class="pill">Scaled Agile Framework (SAFe)</span>
+            <span class="pill">Domain-Driven Design</span>
+            <span class="pill">Hexagonal Architecture</span>
+            <span class="pill">CQRS &amp; Event Sourcing</span>
+            <span class="pill">Continuous improvement mindset</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <div class="edu">
+            <div class="school">Universidade Paulista (UNIP) — IT Management</div>
+            <div class="meta">Campinas, São Paulo, Brazil · Graduated 2012</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      Designed for online viewing · Full career timeline · Last updated: Nov 2025
+    </footer>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const full = document.getElementById('full-career');
+    const btn = document.getElementById('print-pdf');
+
+    function ensureFullCareerOpen(){
+      if(full && !full.open){
+        full.open = true;
+      }
+    }
+
+    if(btn){
+      btn.addEventListener('click', function(){
+        ensureFullCareerOpen();
+        window.print();
+      });
+    }
+
+    // Also expand automatically if user presses Ctrl+P / browser print
+    window.addEventListener('beforeprint', ensureFullCareerOpen);
+  })();
+</script>
+
+</body>
+</html>
