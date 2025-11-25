@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paulo Mateus de Oliveira Leite — Skills & Experience Matrix</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#161616;
+    --muted:#5e5e5e;
+    --accent:#3b82f6;
+    --chip:#eef2ff;
+    --line:#eaeaea;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .container{max-width:980px;margin:32px auto;padding:0 20px}
+  header{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end;border-bottom:2px solid var(--line);padding-bottom:16px}
+  .name{font-size:28px;line-height:1.2;font-weight:800;letter-spacing:.2px}
+  .tagline{color:var(--muted)}
+  .contact{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px}
+  .contact span{white-space:nowrap}
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:28px;margin-top:24px}
+  aside{border-right:1px solid var(--line);padding-right:24px}
+  section{padding-bottom:12px}
+  h1,h2{margin:0}
+  h2{font-size:18px;margin:18px 0 8px 0;letter-spacing:.3px;text-transform:uppercase}
+  .summary{font-size:15px;color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .chip{font-size:13px;padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--line)}
+  .list{margin:0;padding:0;list-style:none}
+  footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center}
+
+  /* Tables */
+  .matrix-section{margin-bottom:16px}
+  .matrix-title{font-weight:700;margin-bottom:4px}
+  .matrix-table{width:100%;border-collapse:collapse;font-size:14px}
+  .matrix-table th,
+  .matrix-table td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+  .matrix-table th{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .matrix-table tbody tr:last-child td{border-bottom:none}
+
+  /* Print */
+  @media print{
+    .container{margin:0;padding:0}
+    header{border:0;padding:0;margin-bottom:8px}
+    .grid{grid-template-columns:300px 1fr;gap:16px;margin-top:8px}
+    a{color:inherit;text-decoration:none}
+    .chip{border-color:#ddd;background:#f8f8ff}
+  }
+  /* Mobile */
+  @media (max-width:800px){
+    .grid{grid-template-columns:1fr}
+    aside{border-right:0;padding-right:0;border-bottom:1px solid var(--line);padding-bottom:12px}
+    .contact{width:100%;margin-left:0}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <div class="name">Paulo Mateus de Oliveira Leite</div>
+        <div class="tagline">.NET / PL&nbsp;SQL Engineer — Skills &amp; Experience Matrix</div>
+      </div>
+      <div class="contact">
+        <span>Braga, Portugal</span>
+        <span><a href="tel:+351912553635">+351&nbsp;912&nbsp;553&nbsp;635</a></span>
+        <span><a href="mailto:paulo.mateus@outlook.com">paulo.mateus@outlook.com</a></span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside>
+        <section>
+          <h2>Overview</h2>
+          <p class="summary">
+            Skills and experience matrix summarizing my technical stack, years of
+            hands-on work, and proficiency levels across .NET, SQL, cloud and
+            modern engineering practices.
+          </p>
+        </section>
+
+        <section>
+          <h2>Highlights</h2>
+          <div class="chips">
+            <span class="chip">17+ years with .NET &amp; C#</span>
+            <span class="chip">Data-intensive financial systems</span>
+            <span class="chip">Oracle &amp; PL/SQL</span>
+            <span class="chip">Azure (5+ years)</span>
+            <span class="chip">Microservices &amp; REST APIs</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Certifications</h2>
+          <ul class="list">
+            <li>Scaled Agile Framework (SAFe)&nbsp;— Certified</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Legend</h2>
+          <ul class="list">
+            <li><strong>Advanced</strong> — deep, production-level expertise; able to design, lead and troubleshoot.</li>
+            <li><strong>Intermediate</strong> — confident day-to-day use; able to implement and maintain features.</li>
+            <li><strong>Initial</strong> — previous professional exposure; able to contribute with guidance.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main>
+        <section>
+          <h2>Competency Matrix</h2>
+
+          <div class="matrix-section">
+            <div class="matrix-title">Backend &amp; .NET Ecosystem</div>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level of Knowledge</th>
+                  <th>Years of Experience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>C#</td><td>Advanced</td><td>17</td></tr>
+                <tr><td>.NET (Framework &amp; Core)</td><td>Advanced</td><td>17</td></tr>
+                <tr><td>REST API</td><td>Advanced</td><td>10</td></tr>
+                <tr><td>MVC (ASP.NET MVC)</td><td>Advanced</td><td>10</td></tr>
+                <tr><td>Windows Forms / WPF</td><td>Intermediate / Advanced</td><td>8</td></tr>
+                <tr><td>Microservices</td><td>Advanced</td><td>5</td></tr>
+                <tr><td>NServiceBus</td><td>Intermediate</td><td>1</td></tr>
+                <tr><td>CQRS, DDD &amp; Event Sourcing</td><td>Intermediate</td><td>1</td></tr>
+                <tr><td>Swagger / API Testing</td><td>Advanced</td><td>6</td></tr>
+                <tr><td>DevExpress MVC</td><td>Intermediate</td><td>3</td></tr>
+                <tr><td>Git</td><td>Advanced</td><td>11</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="matrix-section">
+            <div class="matrix-title">Databases &amp; Data Work</div>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level of Knowledge</th>
+                  <th>Years of Experience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Oracle</td><td>Advanced</td><td>10</td></tr>
+                <tr><td>PL/SQL</td><td>Advanced</td><td>9</td></tr>
+                <tr><td>SQL Server</td><td>Advanced</td><td>3</td></tr>
+                <tr><td>PostgreSQL</td><td>Intermediate</td><td>3</td></tr>
+                <tr><td>MySQL</td><td>Initial</td><td>1</td></tr>
+                <tr><td>T-SQL</td><td>Intermediate</td><td>1</td></tr>
+                <tr><td>Reporting (Crystal Reports / BI)</td><td>Intermediate</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="matrix-section">
+            <div class="matrix-title">Web &amp; JavaScript</div>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level of Knowledge</th>
+                  <th>Years of Experience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>HTML &amp; CSS</td><td>Advanced</td><td>15</td></tr>
+                <tr><td>JavaScript</td><td>Intermediate</td><td>11</td></tr>
+                <tr><td>jQuery</td><td>Intermediate</td><td>8</td></tr>
+                <tr><td>AJAX</td><td>Advanced</td><td>10</td></tr>
+                <tr><td>Vue.js</td><td>Initial</td><td>1</td></tr>
+                <tr><td>Angular</td><td>Initial</td><td>1</td></tr>
+                <tr><td>OrchardCore (CMS)</td><td>Intermediate</td><td>0.5</td></tr>
+                <tr><td>OutSystems 10</td><td>Intermediate</td><td>0.7</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="matrix-section">
+            <div class="matrix-title">Cloud &amp; DevOps</div>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level of Knowledge</th>
+                  <th>Years of Experience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Microsoft Azure</td><td>Advanced</td><td>5</td></tr>
+                <tr><td>AWS SQS</td><td>Initial / Intermediate</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="matrix-section">
+            <div class="matrix-title">Testing &amp; Quality</div>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level of Knowledge</th>
+                  <th>Years of Experience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>NUnit</td><td>Intermediate</td><td>3</td></tr>
+                <tr><td>xUnit</td><td>Intermediate</td><td>2</td></tr>
+                <tr><td>Automated Test Software (factory)</td><td>Intermediate</td><td>0.8</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="matrix-section">
+            <div class="matrix-title">Practices &amp; Methodologies</div>
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Level of Knowledge</th>
+                  <th>Years of Experience</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Agile / Scrum</td><td>Advanced</td><td>10+</td></tr>
+                <tr><td>Scaled Agile Framework (SAFe)</td><td>Certified</td><td>—</td></tr>
+                <tr><td>Domain-Driven Design</td><td>Intermediate</td><td>1</td></tr>
+                <tr><td>Hexagonal Architecture</td><td>Intermediate</td><td>1</td></tr>
+                <tr><td>Financial &amp; Credit Risk Systems</td><td>Advanced</td><td>10+</td></tr>
+                <tr><td>Integrations (ERP, logistics, finance)</td><td>Advanced</td><td>10+</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      Skills &amp; Experience Matrix — generated Nov 2025
+    </footer>
+  </div>
+</body>
+</html>
