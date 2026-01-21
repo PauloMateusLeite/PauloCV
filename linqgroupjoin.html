@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LINQ GroupJoin — Poster Cheat Sheet</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --border: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --accent: #8b5cf6;
+      --accent2: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --codebg: rgba(0,0,0,.30);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1000px 700px at 10% 10%, rgba(139,92,246,.35), transparent 55%),
+        radial-gradient(900px 650px at 90% 20%, rgba(34,197,94,.22), transparent 50%),
+        radial-gradient(900px 650px at 50% 100%, rgba(245,158,11,.14), transparent 50%),
+        var(--bg);
+      line-height: 1.25;
+    }
+
+    a { color: inherit; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,.35); }
+    a:hover { border-bottom-color: rgba(255,255,255,.65); }
+
+    .wrap{
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .title{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(26px, 3.3vw, 40px);
+      letter-spacing: .2px;
+      line-height: 1.05;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 58ch;
+    }
+
+    .badges{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .badge{
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      font-size: 12px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+    }
+    .badge strong{ color: rgba(255,255,255,.92); font-weight: 650; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--panel), rgba(255,255,255,.035));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(600px 200px at 10% 0%, rgba(139,92,246,.18), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .card > *{ position: relative; }
+
+    .card h2{
+      margin:0 0 10px 0;
+      font-size: 14px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      display:flex;
+      align-items:center;
+      gap: 8px;
+    }
+
+    .icon{
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(139,92,246,.12);
+      flex: 0 0 auto;
+    }
+
+    .icon.green{
+      background: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(34,197,94,.10);
+    }
+    .icon.warn{
+      background: var(--warn);
+      box-shadow: 0 0 0 4px rgba(245,158,11,.12);
+    }
+    .icon.danger{
+      background: var(--danger);
+      box-shadow: 0 0 0 4px rgba(239,68,68,.12);
+    }
+
+    .p{
+      margin: 0 0 10px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .rule{
+      margin: 10px 0 12px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+    }
+
+    pre{
+      margin: 0;
+      padding: 10px 10px;
+      border-radius: 14px;
+      background: var(--codebg);
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:auto;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.25;
+      color: rgba(255,255,255,.88);
+      tab-size: 2;
+    }
+
+    code{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.90);
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 2px 6px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    li strong{ color: rgba(255,255,255,.90); font-weight: 650; }
+    .small{ font-size: 12px; color: var(--muted2); }
+
+    .span2{ grid-column: span 2; }
+    .span3{ grid-column: span 3; }
+
+    .callout{
+      border-radius: 16px;
+      background: rgba(255,255,255,.06);
+      border: 1px dashed rgba(255,255,255,.18);
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .callout strong{ color: rgba(255,255,255,.92); }
+
+    footer{
+      margin-top: 14px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 4px 0;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    .print-hint{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .kbd{
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.78);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: 1fr; }
+      .span2,.span3{ grid-column: span 1; }
+      header{ flex-direction: column; align-items: flex-start; }
+      .badges{ justify-content: flex-start; }
+    }
+
+    /* Print: A4 poster */
+    @media print{
+      body{
+        background: #0b1020 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .wrap{
+        max-width: none;
+        padding: 14mm 12mm 10mm;
+      }
+      header{ margin-bottom: 10px; }
+      .card{ box-shadow: none; }
+      a{ border-bottom: none; }
+      .badge{ background: rgba(255,255,255,.08); }
+      footer{ margin-top: 10px; }
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>LINQ <span style="color:var(--accent)">GroupJoin</span> — Poster Cheat Sheet</h1>
+        <div class="subtitle">
+          Um “left join com agrupamento”: 1 linha por <em>outer</em> + um grupo com 0..N matches do <em>inner</em>.
+          Inclui dicas escondidas: chave composta, ordem/nomes, <code>null</code>, comparadores e receitas de query.
+        </div>
+      </div>
+      <div class="badges">
+        <div class="badge"><strong>Query syntax</strong> + Method syntax</div>
+        <div class="badge">GroupJoin ≠ Join</div>
+        <div class="badge">GroupJoin + <code>SelectMany</code> ≈ LEFT JOIN achatado</div>
+        <div class="badge">Imprimível (A4)</div>
+      </div>
+    </header>
+
+    <div class="grid">
+
+      <!-- Mental model -->
+      <section class="card span3">
+        <h2><span class="icon green"></span> Modelo mental (sem dor)</h2>
+        <div class="callout">
+          <strong>GroupJoin</strong> retorna <strong>1 resultado por item do lado esquerdo</strong>, sempre.
+          O lado direito vira um <strong>grupo</strong> (<code>IEnumerable&lt;TInner&gt;</code>) — pode estar vazio.
+        </div>
+        <div class="rule"></div>
+        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+          <div class="callout">
+            <strong>Join</strong><br/>
+            “Achata” (inner join):<br/>
+            <span class="small">1 linha por combinação</span>
+          </div>
+          <div class="callout">
+            <strong>GroupJoin</strong><br/>
+            “Agrupa” (left + group):<br/>
+            <span class="small">1 linha por outer + grupo</span>
+          </div>
+          <div class="callout">
+            <strong>LEFT JOIN achatado</strong><br/>
+            <span class="small">GroupJoin + SelectMany(DefaultIfEmpty)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Classic left join flattened -->
+      <section class="card span2">
+        <h2><span class="icon"></span> Receita: LEFT JOIN (achatado)</h2>
+        <p class="p">
+          Padrão clássico para manter <strong>todos do outer</strong>, mesmo sem matches no inner.
+        </p>
+<pre><code>var q =
+  from c in customers
+  join o in orders on c.Id equals o.CustomerId into og
+  from o in og.DefaultIfEmpty()
+  select new
+  {
+    c.Name,
+    OrderId = (int?)o?.Id
+  };</code></pre>
+        <div class="rule"></div>
+        <ul>
+          <li><strong>Pegadinha:</strong> o <code>DefaultIfEmpty()</code> vem depois do <code>into</code>, no segundo <code>from</code>.</li>
+          <li><strong>Sem match</strong> ⇒ <code>o</code> vira <code>null</code> (por isso o <code>o?.Id</code>).</li>
+        </ul>
+      </section>
+
+      <!-- Pure groupjoin -->
+      <section class="card">
+        <h2><span class="icon green"></span> GroupJoin “puro”</h2>
+        <p class="p">Quando você quer trabalhar com o <strong>grupo</strong> (contagens, últimos, agregações).</p>
+<pre><code>var q =
+  from c in customers
+  join o in orders on c.Id equals o.CustomerId into og
+  select new
+  {
+    c.Name,
+    Orders = og,
+    Count = og.Count(),
+    Last = og.OrderByDescending(x =&gt; x.Date)
+             .FirstOrDefault()
+  };</code></pre>
+        <div class="rule"></div>
+        <ul>
+          <li><strong>og</strong> é um <code>IEnumerable</code>. Em LINQ to Objects, enumerar várias vezes custa.</li>
+        </ul>
+      </section>
+
+      <!-- Composite keys -->
+      <section class="card span2">
+        <h2><span class="icon warn"></span> Chave composta: “AND” implícito</h2>
+        <p class="p">
+          Em <code>join</code> você não escreve <code>a==b && c==d</code>.
+          O “AND” é projetar uma <strong>chave composta</strong>.
+        </p>
+<pre><code>// ✅ OK (nomes e ordem batem)
+from c in customers
+join o in orders
+on new { c.Id, c.Region }
+equals new { Id = o.CustomerId, o.Region } into og</code></pre>
+        <div class="rule"></div>
+        <ul>
+          <li><strong>Ordem importa:</strong> <code>new { c.Region, c.Id }</code> não “casa” com <code>new { o.CustomerId, o.Region }</code>.</li>
+          <li><strong>Nomes importam:</strong> se você renomear, renomeie <strong>dos dois lados</strong>.</li>
+        </ul>
+      </section>
+
+      <!-- Pitfalls -->
+      <section class="card">
+        <h2><span class="icon danger"></span> Pegadinhas silenciosas</h2>
+        <ul>
+          <li><strong>Comparer padrão:</strong> usa <code>EqualityComparer&lt;TKey&gt;.Default</code>.</li>
+          <li><strong>null:</strong> pode quebrar expectativa (em SQL, <code>NULL = NULL</code> não é “true” no sentido clássico).</li>
+          <li><strong>EF vs Objects:</strong> nem tudo traduz (ex.: comparer custom).</li>
+        </ul>
+        <div class="rule"></div>
+        <p class="p"><strong>Normalização de null</strong> (quando fizer sentido):</p>
+<pre><code>// Ex.: tratar null como string vazia
+on (c.Region ?? "") equals (o.Region ?? "")</code></pre>
+      </section>
+
+      <!-- Comparer custom -->
+      <section class="card">
+        <h2><span class="icon"></span> Comparador customizado (Objects)</h2>
+        <p class="p">Útil para case-insensitive, cultura etc. (geralmente <strong>não traduz</strong> no EF).</p>
+<pre><code>var q = customers.GroupJoin(
+  orders,
+  c =&gt; c.Email,
+  o =&gt; o.Email,
+  (c, og) =&gt; new { c, og },
+  StringComparer.OrdinalIgnoreCase);</code></pre>
+        <div class="rule"></div>
+        <div class="callout">
+          <strong>Dica:</strong> Se você estiver no EF/SQL, prefira normalizar (ex.: <code>ToUpper()</code>) com cuidado
+          e verifique a tradução/índices.
+        </div>
+      </section>
+
+      <!-- Performance -->
+      <section class="card span2">
+        <h2><span class="icon warn"></span> Performance: múltiplas enumerações</h2>
+        <p class="p">Em LINQ to Objects, isso enumera o grupo várias vezes:</p>
+<pre><code>select new {
+  Count = og.Count(),
+  Sum   = og.Sum(x =&gt; x.Total),
+  First = og.FirstOrDefault()
+};</code></pre>
+        <div class="rule"></div>
+        <p class="p"><strong>Objects:</strong> materialize uma vez (quando fizer sentido):</p>
+<pre><code>var q =
+  from c in customers
+  join o in orders on c.Id equals o.CustomerId into og
+  let list = og.ToList()
+  select new {
+    c.Name,
+    Count = list.Count,
+    Sum   = list.Sum(x =&gt; x.Total)
+  };</code></pre>
+        <div class="callout small">
+          <strong>EF/SQL:</strong> cuidado com <code>ToList()</code> no meio (pode quebrar tradução ou puxar dados demais).
+          Prefira agregações traduzíveis no <code>select</code> (Count/Sum/Any/Max...).
+        </div>
+      </section>
+
+      <!-- Method syntax equivalence -->
+      <section class="card">
+        <h2><span class="icon green"></span> Query vs Method (equivalência)</h2>
+        <p class="p">Mesma ideia, sintaxes diferentes.</p>
+<pre><code>// Query syntax
+from a in A
+join b in B on a.Id equals b.AId into bg
+select new { a, bg }
+
+// Method syntax
+A.GroupJoin(
+  B,
+  a =&gt; a.Id,
+  b =&gt; b.AId,
+  (a, bg) =&gt; new { a, bg });</code></pre>
+      </section>
+
+      <!-- Recipes -->
+      <section class="card span3">
+        <h2><span class="icon"></span> Receitas (copy/paste)</h2>
+        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+          <div class="card" style="box-shadow:none; background: rgba(255,255,255,.04);">
+            <h2 style="margin-bottom:8px;"><span class="icon green"></span> Outer sem matches</h2>
+<pre><code>var q =
+  from c in customers
+  join o in orders
+    on c.Id equals o.CustomerId into og
+  where !og.Any()
+  select c;</code></pre>
+          </div>
+
+          <div class="card" style="box-shadow:none; background: rgba(255,255,255,.04);">
+            <h2 style="margin-bottom:8px;"><span class="icon green"></span> Último item do grupo</h2>
+<pre><code>var q =
+  from c in customers
+  join o in orders
+    on c.Id equals o.CustomerId into og
+  let last = og.OrderByDescending(x =&gt; x.Date)
+               .FirstOrDefault()
+  select new { c.Name, last };</code></pre>
+          </div>
+
+          <div class="card" style="box-shadow:none; background: rgba(255,255,255,.04);">
+            <h2 style="margin-bottom:8px;"><span class="icon green"></span> Agregações por outer</h2>
+<pre><code>var q =
+  from c in customers
+  join o in orders
+    on c.Id equals o.CustomerId into og
+  select new {
+    c.Id,
+    Count = og.Count(),
+    Total = og.Sum(x =&gt; x.Total),
+    HasAny = og.Any()
+  };</code></pre>
+          </div>
+        </div>
+
+        <div class="rule"></div>
+        <div class="callout">
+          <strong>Checklist rápido:</strong>
+          (1) outerKey == innerKey? (tipo/ordem/nomes) ·
+          (2) precisa manter outer sem match? use <code>into</code> + <code>DefaultIfEmpty</code> ·
+          (3) cuidado com <code>null</code> ·
+          (4) em Objects, evite enumerar o grupo 10x ·
+          (5) em EF, garanta que traduz.
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      <div class="print-hint">
+        <span class="kbd">Ctrl/Cmd + P</span>
+        <span class="small">Dica: imprima em “A4” e marque “Gráficos de plano de fundo” para manter as cores.</span>
+      </div>
+      <div>
+        Feito por <strong>Paulo</strong> • <span class="small">LINQ GroupJoin Poster</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
